@@ -5,7 +5,7 @@ import { reducer, initialState } from "../state/reducers";
 import useInitHook from "../hooks/useInitHook";
 import MainView from "./MainView";
 import { repoParser } from "../helpers/repos";
-import { starredCookieUpdater } from "../helpers/cookies";
+import { updateLocalStorage } from "../helpers/localStorage";
 export function App() {
   const { repos, isLoading } = useInitHook();
   const [state, dispatch] = React.useReducer(reducer, initialState);
@@ -14,7 +14,7 @@ export function App() {
     : (each: Repo) => each;
 
   const updateStarredRepos = (id: number): void => {
-    starredCookieUpdater(id);
+    updateLocalStorage(id);
     dispatch({ type: "updateRepos", value: repos.map(repoParser) });
   };
 

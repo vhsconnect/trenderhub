@@ -1,7 +1,7 @@
-import { readStarredIdsFromCookie } from "../helpers/cookies";
+import { readStarredReposFromStorage } from "../helpers/localStorage";
 
 export const repoParser = (repo: Repo) => {
-  let currentStars = readStarredIdsFromCookie();
+  let currentStars = readStarredReposFromStorage();
   if (currentStars.includes(repo.id.toString())) {
   }
   return {

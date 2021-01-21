@@ -1,4 +1,4 @@
-export const starredCookieUpdater = (id: number) => {
+export const updateLocalStorage = (id: number) => {
 
   let storage = window.localStorage.getItem("starredIds") || "";
 
@@ -12,7 +12,7 @@ export const starredCookieUpdater = (id: number) => {
   window.localStorage.setItem("starredIds", storage);
 };
 
-export const readStarredIdsFromCookie = () => {
+export const readStarredReposFromStorage = () => {
   let storage = window.localStorage.getItem("starredIds") || "";
   return storage.split(",");
 };
