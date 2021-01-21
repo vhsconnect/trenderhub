@@ -4,7 +4,7 @@
 import {
   updateLocalStorage,
   readStarredReposFromStorage
-} from "../localStorage";
+} from "../../src/helpers/localStorage";
 const mockedGet = jest.fn();
 const mockedSet = jest.fn();
 let storage = { starredIds: "555" };
