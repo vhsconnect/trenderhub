@@ -2,7 +2,7 @@ import * as React from "react";
 import * as styles from "../styles/stylesClasses";
 import Tag from "./Tag";
 import Button from "./Button";
-const RepoCard = (props: { repo: Repo; key: string }) => {
+const RepoCard = (props: { repo: Repo }) => {
   const { repo } = props;
   return (
     <div className={styles.repoCard}>

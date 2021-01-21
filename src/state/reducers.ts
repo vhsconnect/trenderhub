@@ -1,9 +1,11 @@
 const initialState: ApplicationState = {
-  searchFieldText: ''
+  searchFieldText: '',
+  repos: []
 }
 
 type Action= 
  | {type: 'updateSearchBox', value: string} 
+ | {type: 'updateRepos', value: Repo[]} 
 
 
 const reducer: (
@@ -15,6 +17,11 @@ const reducer: (
       return {
         ...state,
         searchFieldText : action.value
+      }
+    case 'updateRepos':
+      return { 
+        ...state,
+        repos: action.value
       }
   }
 };

@@ -5,8 +5,13 @@ import { reducer, initialState } from "../state/reducers";
 import useInitHook from "../hooks/useInitHook";
 import MainView from "./MainView";
 export function App() {
+
   const { repos, isLoading } = useInitHook();
   const [state, dispatch] = React.useReducer(reducer, initialState);
+
+  React.useEffect(() => {
+  dispatch({ type: "updateRepos", value: repos });
+  }, [repos])
 
   const textUpdater: textUpdateFunction = e =>
     dispatch({ type: "updateSearchBox", value: e.target.value });
