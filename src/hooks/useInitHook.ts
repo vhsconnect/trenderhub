@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
+import { repoParser } from "../helpers/repos";
+import { lastWeeksDate } from "../helpers/date";
 
-export default function useInitHook() : {
-  repos: Repo[]
-  isLoading: boolean
-}{
+export default function useInitHook(): {
+  repos: Repo[];
+  isLoading: boolean;
+} {
   const [repos, setRepos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
-    const f = async () => {
-      await fetch("https://api.github.com/search/repositories?q=created:>2017-01-10&sort=stars&order=desc")
+    (async () => {
+      await fetch(
+        `https://api.github.com/search/repositories?q=created:>${lastWeeksDate()}&sort=stars&order=desc`
+      )
         .then(
           data => data.json(),
           e => {
@@ -17,15 +20,13 @@ export default function useInitHook() : {
           }
         )
         .then(data => {
-          console.log(data)
-          setRepos(data.items);
+          setRepos(data.items.map(repoParser));
           setIsLoading(false);
         })
         .catch(e => {
           console.error("/GET: fetching error useInitHook | ", e);
         });
-    };
-    f();
+    })();
   }, []);
   return { repos, isLoading };
 }

@@ -3,7 +3,7 @@ const Button = (props: ButtonInterface) => (
   <button
     onClick={e => {
       e.preventDefault();
-      props.actuate();
+      props.actuate(e);
     }}
   >
   {props.content}
