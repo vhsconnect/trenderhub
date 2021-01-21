@@ -24,8 +24,8 @@
   }
   button:hover {
     outline: none;
-    background-color: grey;
-    color: black;
+    background-color: black;
+    color: white;
     border: darkgrey solid 1px;
   }
 }
