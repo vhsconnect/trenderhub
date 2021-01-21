@@ -1,11 +1,13 @@
 const initialState: ApplicationState = {
   searchFieldText: '',
-  repos: []
+  repos: [],
+  myStarsMode: false
 }
 
 type Action= 
  | {type: 'updateSearchBox', value: string} 
  | {type: 'updateRepos', value: Repo[]} 
+ | {type: 'toggleMyStarsMode', value: boolean}
 
 
 const reducer: (
@@ -22,6 +24,11 @@ const reducer: (
       return { 
         ...state,
         repos: action.value
+      }
+    case 'toggleMyStarsMode':
+      return { 
+        ...state,
+        myStarsMode: action.value
       }
   }
 };

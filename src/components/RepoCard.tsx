@@ -2,7 +2,7 @@ import * as React from "react";
 import * as styles from "../styles/stylesClasses";
 import Tag from "./Tag";
 import Button from "./Button";
-const RepoCard = (props: { repo: Repo }) => {
+const RepoCard = (props: { repo: Repo , updateStarredRepos: (id: number) => void }) => {
   const { repo } = props;
   return (
     <div className={styles.repoCard}>
@@ -20,7 +20,9 @@ const RepoCard = (props: { repo: Repo }) => {
       <p className={styles.repoDescription}> {repo.description}</p>
       {repo.language ? <Tag text={repo.language} /> : <div />}
       <div className={styles.starButton}>
-        <Button actuate={() => {}} content="Star this repo" />
+    <Button actuate={() => {
+      props.updateStarredRepos(repo.id)
+    }} content={repo.isStarred ? "⭐⭐⭐⭐⭐" : "Star this repo"} />
       </div>
     </div>
   );
